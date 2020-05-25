@@ -1,0 +1,18 @@
+Описание каждого датасета:
+	data = pd.read_csv('titanic.csv', delimiter=',') - считываем данные
+	data.head() - несколько первых строк
+	data.info() - информация о данных (тип, non-null)
+	data.shape() - размеры датасета
+	data.isnull().any().any() - проверка на null
+	data.describe() - описание статистических значений для всех переменных
+
+Даммирование и разделение на тестовую и обучающую выборку
+	Проверка категориальных данных, закодированных в виде строк
+		data_dummies = pd.get_dummies(data)
+	Берем только те столбцы, которые содержат признаки,
+	то есть все столбцы, начиная с 'age' и заканчивая 'occupation_ Transport-moving'
+	Этот диапазон содержит все признаки, кроме целевой переменной
+		features = data_dummies.loc[:, 'age':'occupation_Transport-moving']
+	Извлекаем массивы NumPy
+
+	С помощью train_test_split делим выборку на train и test
